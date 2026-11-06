@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Batik Pekalongan - Mahakarya Tradisi & Elegansi Modern</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        batik: {
+                            navy: '#0F172A',
+                            navyLight: '#1E293B',
+                            gold: '#D97706',
+                            goldHover: '#B45309',
+                            goldLight: '#FEF3C7',
+                            cream: '#FAF8F5',
+                            accent: '#991B1B'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        heading: ['Cinzel', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom Pattern Background Overlay */
+        .bg-batik-pattern {
+            background-color: #0F172A;
+            background-image: radial-gradient(#D97706 0.75px, transparent 0.75px), radial-gradient(#D97706 0.75px, #0F172A 0.75px);
+            background-size: 30px 30px;
+            background-position: 0 0, 15px 15px;
+            opacity: 0.95;
+        }
+        
+        /* Subtle Golden Glow Effect */
+        .gold-glow {
+            box-shadow: 0 0 25px -5px rgba(217, 119, 6, 0.3);
+        }
+        
+        .gold-glow-hover:hover {
+            box-shadow: 0 10px 30px -5px rgba(217, 119, 6, 0.4);
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0F172A;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #D97706;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-batik-cream text-slate-800 font-sans antialiased overflow-x-hidden">
+
+    <!-- NAVBAR -->
+    <header id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-batik-navy/90 backdrop-blur-md border-b border-amber-500/20 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <a href="#" class="flex items-center space-x-3 group">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-amber-600 to-yellow-400 flex items-center justify-center text-batik-navy font-bold text-xl shadow-lg transform group-hover:rotate-12 transition-transform">
+                        <i class="fa-solid fa-[#000] fa-crown"></i>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-heading font-bold text-lg sm:text-xl tracking-wider text-amber-400">BATIK PEKALONGAN</span>
+                        <span class="text-[10px] tracking-widest uppercase text-amber-200/80 -mt-1">Mahakarya Nusantara</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Nav Links -->
+                <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                    <a href="#beranda" class="hover:text-amber-400 transition-colors py-2 border-b-2 border-transparent hover:border-amber-400">Beranda</a>
+                    <a href="#tentang" class="hover:text-amber-400 transition-colors py-2 border-b-2 border-transparent hover:border-amber-400">Tentang Kami</a>
+                    <a href="#keunggulan" class="hover:text-amber-400 transition-colors py-2 border-b-2 border-transparent hover:border-amber-400">Keunggulan</a>
+                    <a href="#katalog" class="hover:text-amber-400 transition-colors py-2 border-b-2 border-transparent hover:border-amber-400">Katalog</a>
+                    <a href="#testimoni" class="hover:text-amber-400 transition-colors py-2 border-b-2 border-transparent hover:border-amber-400">Testimoni</a>
+                    <a href="#kontak" class="hover:text-amber-400 transition-colors py-2 border-b-2 border-transparent hover:border-amber-400">Kontak</a>
+                </nav>
+
+                <!-- CTA Button Desktop -->
+                <div class="hidden md:flex items-center">
+                    <a href="https://wa.me/6281234567890?text=Halo%20Batik%20Pekalongan,%20saya%20ingin%20konsultasi%20produk" target="_blank" class="px-5 py-2.5 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-batik-navy font-semibold rounded-full shadow-md hover:shadow-amber-500/20 transition-all duration-300 flex items-center gap-2 transform hover:-translate-y-0.5">
+                        <i class="fa-brands fa-whatsapp text-lg"></i>
+                        <span>Hubungi Kami</span>
+                    </a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" type="button" class="text-amber-400 hover:text-white focus:outline-none p-2" aria-label="Toggle Menu">
+                        <i id="menu-icon" class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-batik-navy border-b border-amber-500/20 px-4 pt-2 pb-6 space-y-3">
+            <a href="#beranda" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-amber-500/10 hover:text-amber-400">Beranda</a>
+            <a href="#tentang" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:bg-amber-500/10 hover:text-amber-400">Tentang Kami</a>
+            <a href="#keunggulan" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:bg-amber-500/10 hover:text-amber-400">Keunggulan</a>
+            <a href="#katalog" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:bg-amber-500/10 hover:text-amber-400">Katalog</a>
+            <a href="#testimoni" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:bg-amber-500/10 hover:text-amber-400">Testimoni</a>
+            <a href="#kontak" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:bg-amber-500/10 hover:text-amber-400">Kontak</a>
+            <a href="https://wa.me/6281234567890" target="_blank" class="w-full mt-2 px-5 py-3 bg-amber-500 text-batik-navy font-bold rounded-lg text-center flex items-center justify-center gap-2">
+                <i class="fa-brands fa-whatsapp text-xl"></i>
+                <span>Hubungi via WhatsApp</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="beranda" class="relative min-h-screen flex items-center justify-center pt-24 pb-16 bg-batik-navy text-white overflow-hidden">
+        <!-- Background Overlay Image & Patterns -->
+        <div class="absolute inset-0 bg-batik-pattern z-0 opacity-40"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-batik-navy via-transparent to-batik-navy/80 z-0"></div>
+
+        <!-- Decorative Glow Orbs -->
+        <div class="absolute -top-32 -left-32 w-96 h-96 bg-amber-500/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -bottom-32 -right-32 w-96 h-96 bg-amber-600/15 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            <!-- Left Hero Text -->
+            <div class="lg:col-span-7 text-center lg:text-left space-y-6">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs sm:text-sm font-semibold tracking-wide">
+                    <i class="fa-solid fa-award"></i> Warisan Budaya UNESCO Pekalongan
+                </div>
+                
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold tracking-tight text-white leading-tight">
+                    Keindahan Mahakarya <br class="hidden sm:inline">
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-amber-400 to-amber-600">Batik Tulis & Cap</span> 
+                    Khas Pekalongan
+                </h1>
+
+                <p class="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 font-light leading-relaxed">
+                    Menghadirkan sentuhan seni tinggi dengan kain kualitas sutra dan katun pilihan. Diproses secara tradisional oleh pengrajin berpengalaman untuk gaya elegan bernuansa warisan Nusantara.
+                </p>
+
+                <!-- CTA Buttons -->
+                <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+                    <a href="#katalog" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-batik-navy font-bold rounded-full shadow-lg hover:shadow-amber-500/25 transition-all duration-300 text-center flex items-center justify-center gap-2 group">
+                        <span>Lihat Koleksi Katalog</span>
+                        <i class="fa-solid fa-arrow-right transition-transform group-hover:translate-x-1"></i>
+                    </a>
+                    <a href="https://wa.me/6281234567890" target="_blank" class="w-full sm:w-auto px-8 py-4 bg-slate-800/80 hover:bg-slate-700 text-white font-medium rounded-full border border-amber-500/30 hover:border-amber-400 transition-all duration-300 text-center flex items-center justify-center gap-2">
+                        <i class="fa-brands fa-whatsapp text-xl text-green-400"></i>
+                        <span>Pesan Custom via WA</span>
+                    </a>
+                </div>
+
+                <!-- Stats Footer -->
+                <div class="pt-8 border-t border-slate-800/80 grid grid-cols-3 gap-4 max-w-lg mx-auto lg:mx-0 text-center lg:text-left">
+                    <div>
+                        <p class="text-2xl sm:text-3xl font-serif font-bold text-amber-400">100%</p>
+                        <p class="text-xs text-slate-400 mt-1">Asli Pekalongan</p>
+                    </div>
+                    <div>
+                        <p class="text-2xl sm:text-3xl font-serif font-bold text-amber-400">15+</p>
+                        <p class="text-xs text-slate-400 mt-1">Tahun Pengalaman</p>
+                    </div>
+                    <div>
+                        <p class="text-2xl sm:text-3xl font-serif font-bold text-amber-400">5.000+</p>
+                        <p class="text-xs text-slate-400 mt-1">Pelanggan Puas</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Hero Image Cards Visual -->
+            <div class="lg:col-span-5 relative flex justify-center">
+                <div class="relative w-full max-w-md">
+                    <!-- Glow Behind Image -->
+                    <div class="absolute inset-0 bg-gradient-to-tr from-amber-500 to-amber-700 rounded-3xl blur-2xl opacity-40 transform rotate-6 scale-95"></div>
+                    
+                    <!-- Main Image Card -->
+                    <div class="relative bg-batik-navyLight rounded-3xl overflow-hidden border border-amber-500/30 shadow-2xl">
+                        <img src="https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=800&q=80" alt="Batik Pekalongan Premium" class="w-full h-[420px] object-cover object-top hover:scale-105 transition-transform duration-700">
+                        <div class="absolute bottom-0 inset-x-0 p-6 bg-gradient-to-t from-batik-navy via-batik-navy/80 to-transparent">
+                            <span class="px-3 py-1 bg-amber-500 text-batik-navy text-xs font-bold rounded-full uppercase tracking-wider">Koleksi Eksklusif</span>
+                            <h3 class="text-xl font-serif font-bold text-white mt-2">Motif Jlamprang Premium</h3>
+                            <p class="text-amber-200/90 text-sm font-light mt-1">Batik Tulis Halus 100% Sutra Alam</p>
+                        </div>
+                    </div>
+
+                    <!-- Floating Badge -->
+                    <div class="absolute -bottom-6 -left-6 bg-slate-900/90 backdrop-blur-md p-4 rounded-2xl border border-amber-500/40 shadow-xl flex items-center gap-3">
+                        <div class="w-12 h-12 rounded-full bg-amber-500/20 border border-amber-400 flex items-center justify-center text-amber-400">
+                            <i class="fa-solid fa-gem text-xl"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs text-slate-400">Jaminan Kualitas</p>
+                            <p class="text-sm font-bold text-white">Bahan Katun Primissima</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- TENTANG KAMI SECTION -->
+    <section id="tentang" class="py-24 bg-batik-cream relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                
+                <!-- Left Section Image Grid -->
+                <div class="relative grid grid-cols-2 gap-4">
+                    <div class="space-y-4">
+                        <img class="rounded-2xl shadow-lg object-cover w-full h-64 border-2 border-amber-500/20" src="https://images.unsplash.com/photo-1606744888344-493238951221?auto=format&fit=crop&w=600&q=80" alt="Pengrajin Batik Tulis">
+                        <div class="bg-amber-600 text-white p-6 rounded-2xl shadow-lg text-center">
+                            <i class="fa-solid fa-globe text-3xl mb-2 text-amber-200"></i>
+                            <h4 class="font-serif font-bold text-lg">Kota Kreatif UNESCO</h4>
+                            <p class="text-xs text-amber-100 mt-1">Pekalongan Diakui Dunia untuk Seni Batik</p>
+                        </div>
+                    </div>
+                    <div class="space-y-4 pt-8">
+                        <div class="bg-batik-navy text-white p-6 rounded-2xl shadow-lg border border-amber-500/30">
+                            <h3 class="text-3xl font-serif font-bold text-amber-400">Warisan</h3>
+                            <p class="text-xs text-slate-300 mt-1">Luhur Budaya Tradisional</p>
+                        </div>
+                        <img class="rounded-2xl shadow-lg object-cover w-full h-64 border-2 border-amber-500/20" src="https://images.unsplash.com/photo-1544441893-675973e31985?auto=format&fit=crop&w=600&q=80" alt="Kain Batik Pekalongan">
+                    </div>
+                </div>
+
+                <!-- Right Section Text -->
+                <div class="space-y-6">
+                    <div class="inline-flex items-center gap-2 text-amber-700 font-semibold text-sm tracking-widest uppercase">
+                        <span class="w-8 h-0.5 bg-amber-600"></span> Profil UMKM Kami
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl font-serif font-bold text-slate-900 leading-tight">
+                        Menjaga Keaslian Tradisi Batik Pekalongan Dalam Setiap Helai Kain
+                    </h2>
+                    <p class="text-slate-600 leading-relaxed font-normal">
+                        Sebagai bagian dari Pekalongan — **Kota Kreatif Dunia UNESCO kategori Crafts and Folk Art**, kami berkomitmen menghadirkan produk batik asli khas pesisir yang kaya akan warna, dinamis, dan penuh makna filosofis.
+                    </p>
+                    <p class="text-slate-600 leading-relaxed font-normal">
+                        Setiap helai kain dikerjakan secara teliti oleh tangan-tangan terampil pengrajin lokal menggunakan malam asli dan pewarna berkualitas tinggi. Dari motif klasik *Jlamprang*, *Seven Heroes (Buketan)*, hingga kreasi modern kontemporer.
+                    </p>
+
+                    <!-- Feature Bullet Points -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                        <div class="flex items-start gap-3">
+                            <div class="w-6 h-6 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center shrink-0 mt-1">
+                                <i class="fa-solid fa-check text-xs"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 text-sm">Batik Tulis & Cap Asli</h4>
+                                <p class="text-xs text-slate-500">Bukan cetak kain bermotif biasa</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-6 h-6 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center shrink-0 mt-1">
+                                <i class="fa-solid fa-check text-xs"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 text-sm">Pewarnaan Awet</h4>
+                                <p class="text-xs text-slate-500">Tidak mudah pudar meski dicuci</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- KEUNGGULAN SECTION -->
+    <section id="keunggulan" class="py-20 bg-slate-900 text-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <p class="text-amber-400 font-semibold text-sm tracking-widest uppercase mb-2">Mengapa Memilih Kami</p>
+                <h2 class="text-3xl sm:text-4xl font-serif font-bold text-white">Keunggulan Batik Pekalongan Kami</h2>
+                <div class="w-16 h-1 bg-amber-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-slate-800/80 p-8 rounded-2xl border border-amber-500/20 hover:border-amber-400 transition-all duration-300 group hover:-translate-y-2">
+                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-amber-500 to-amber-600 flex items-center justify-center text-batik-navy text-2xl font-bold mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-stamp"></i>
+                    </div>
+                    <h3 class="text-xl font-serif font-bold text-white mb-3">Tulis & Cap Asli</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Dibuat langsung dengan proses tradisional canting tulis dan cap lilin malam khas pengrajin lokal.
+                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-slate-800/80 p-8 rounded-2xl border border-amber-500/20 hover:border-amber-400 transition-all duration-300 group hover:-translate-y-2">
+                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-amber-500 to-amber-600 flex items-center justify-center text-batik-navy text-2xl font-bold mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-shirt"></i>
+                    </div>
+                    <h3 class="text-xl font-serif font-bold text-white mb-3">Bahan Premium 100%</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Menggunakan kain Katun Primissima, Sutra Organik, dan Rayon yang adem, halus, dan nyaman dipakai seharian.
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-slate-800/80 p-8 rounded-2xl border border-amber-500/20 hover:border-amber-400 transition-all duration-300 group hover:-translate-y-2">
+                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-amber-500 to-amber-600 flex items-center justify-center text-batik-navy text-2xl font-bold mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-palette"></i>
+                    </div>
+                    <h3 class="text-xl font-serif font-bold text-white mb-3">Warna Tahan Lama</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Proses penguncian warna berkualitas tinggi menjaga batik tetap cerah dan tidak luntur meskipun dikeramas berulang.
+                    </p>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="bg-slate-800/80 p-8 rounded-2xl border border-amber-500/20 hover:border-amber-400 transition-all duration-300 group hover:-translate-y-2">
+                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-amber-500 to-amber-600 flex items-center justify-center text-batik-navy text-2xl font-bold mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-truck-fast"></i>
+                    </div>
+                    <h3 class="text-xl font-serif font-bold text-white mb-3">Pengiriman Seluruh RI</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Pengiriman cepat & aman ke seluruh wilayah Indonesia dengan kemasan eksklusif cocok untuk kado / hampers.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- KATALOG PRODUK SECTION -->
+    <section id="katalog" class="py-24 bg-batik-cream">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <p class="text-amber-700 font-semibold text-sm tracking-widest uppercase mb-2">Koleksi Terpopuler</p>
+                <h2 class="text-3xl sm:text-4xl font-serif font-bold text-slate-900">Katalog Produk Batik</h2>
+                <p class="text-slate-600 text-sm mt-3">Temukan beragam pilihan motif elegan sesuai dengan kebutuhan acara Anda.</p>
+                <div class="w-16 h-1 bg-amber-600 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <!-- Category Filter Tabs -->
+            <div class="flex flex-wrap justify-center gap-2 sm:gap-4 mb-12" id="filter-tabs">
+                <button data-filter="all" class="tab-btn px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 bg-batik-navy text-white shadow-md">
+                    Semua Produk
+                </button>
+                <button data-filter="tulis" class="tab-btn px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 bg-white text-slate-700 hover:bg-amber-100 shadow-sm">
+                    Batik Tulis
+                </button>
+                <button data-filter="cap" class="tab-btn px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 bg-white text-slate-700 hover:bg-amber-100 shadow-sm">
+                    Batik Cap
+                </button>
+                <button data-filter="pria" class="tab-btn px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 bg-white text-slate-700 hover:bg-amber-100 shadow-sm">
+                    Kemeja Pria
+                </button>
+                <button data-filter="wanita" class="tab-btn px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 bg-white text-slate-700 hover:bg-amber-100 shadow-sm">
+                    Dress Wanita
+                </button>
+                <button data-filter="kain" class="tab-btn px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 bg-white text-slate-700 hover:bg-amber-100 shadow-sm">
+                    Kain Batik
+                </button>
+            </div>
+
+            <!-- Product Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" id="product-grid">
+                
+                <!-- Product Card 1 -->
+                <div class="product-card bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col" data-category="tulis pria">
+                    <div class="relative overflow-hidden group h-72">
+                        <img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=600&q=80" alt="Kemeja Batik Tulis Megamendung" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <span class="absolute top-4 left-4 bg-amber-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Terlaris</span>
+                        <div class="absolute inset-0 bg-slate-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <button onclick="openModal('Kemeja Batik Tulis Megamendung Pekalongan', 'Rp 450.000', 'Batik Tulis Halus Katun Primissima')" class="px-5 py-2 bg-white text-slate-900 font-bold rounded-full text-sm shadow-md hover:bg-amber-400 transition-colors">
+                                Lihat Detail
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs text-amber-700 font-semibold uppercase tracking-wider">Batik Tulis • Pria</span>
+                            <h3 class="text-lg font-serif font-bold text-slate-900 mt-1">Kemeja Motif Megamendung Klasik</h3>
+                            <p class="text-xs text-slate-500 mt-1">Bahan: Katun Primissima Furing Ero</p>
+                        </div>
+                        <div class="mt-6 flex items-center justify-between pt-4 border-t border-slate-100">
+                            <div>
+                                <span class="text-xs text-slate-400 line-through">Rp 550.000</span>
+                                <p class="text-xl font-bold text-amber-700">Rp 450.000</p>
+                            </div>
+                            <a href="https://wa.me/6281234567890?text=Saya%20berminat%20pesan%20Kemeja%20Motif%20Megamendung%20Klasik" target="_blank" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold rounded-lg flex items-center gap-1.5 transition-colors">
+                                <i class="fa-brands fa-whatsapp text-sm"></i> Pesan WA
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 2 -->
+                <div class="product-card bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col" data-category="cap wanita">
+                    <div class="relative overflow-hidden group h-72">
+                        <img src="https://images.unsplash.com/photo-1583391733956-6c78276477e2?auto=format&fit=crop&w=600&q=80" alt="Dress Batik Seven Heroes" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <span class="absolute top-4 left-4 bg-slate-900 text-amber-400 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Limited</span>
+                        <div class="absolute inset-0 bg-slate-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <button onclick="openModal('Dress Batik Cap Seven Heroes (Buketan)', 'Rp 380.000', 'Batik Cap Kombinasi Katun Rayon Super')" class="px-5 py-2 bg-white text-slate-900 font-bold rounded-full text-sm shadow-md hover:bg-amber-400 transition-colors">
+                                Lihat Detail
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs text-amber-700 font-semibold uppercase tracking-wider">Batik Cap • Wanita</span>
+                            <h3 class="text-lg font-serif font-bold text-slate-900 mt-1">Dress Batik Motif Seven Heroes</h3>
+                            <p class="text-xs text-slate-500 mt-1">Bahan: Rayon Viscose High Quality</p>
+                        </div>
+                        <div class="mt-6 flex items-center justify-between pt-4 border-t border-slate-100">
+                            <div>
+                                <span class="text-xs text-slate-400 line-through">Rp 420.000</span>
+                                <p class="text-xl font-bold text-amber-700">Rp 380.000</p>
+                            </div>
+                            <a href="https://wa.me/6281234567890?text=Saya%20berminat%20pesan%20Dress%20Batik%20Motif%20Seven%20Heroes" target="_blank" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold rounded-lg flex items-center gap-1.5 transition-colors">
+                                <i class="fa-brands fa-whatsapp text-sm"></i> Pesan WA
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 3 -->
+                <div class="product-card bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col" data-category="tulis kain">
+                    <div class="relative overflow-hidden group h-72">
+                        <img src="https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=600&q=80" alt="Kain Batik Jlamprang Sutra" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <span class="absolute top-4 left-4 bg-amber-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Exclusive</span>
+                        <div class="absolute inset-0 bg-slate-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <button onclick="openModal('Kain Panjang Batik Tulis Jlamprang', 'Rp 850.000', 'Batik Tulis Sutra Alam 2.25 x 1.15 meter')" class="px-5 py-2 bg-white text-slate-900 font-bold rounded-full text-sm shadow-md hover:bg-amber-400 transition-colors">
+                                Lihat Detail
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs text-amber-700 font-semibold uppercase tracking-wider">Batik Tulis • Kain</span>
+                            <h3 class="text-lg font-serif font-bold text-slate-900 mt-1">Kain Panjang Motif Jlamprang Sutra</h3>
+                            <p class="text-xs text-slate-500 mt-1">Ukuran: 2.25m x 1.15m (Sutra Organik)</p>
+                        </div>
+                        <div class="mt-6 flex items-center justify-between pt-4 border-t border-slate-100">
+                            <div>
+                                <span class="text-xs text-slate-400 line-through">Rp 980.000</span>
+                                <p class="text-xl font-bold text-amber-700">Rp 850.000</p>
+                            </div>
+                            <a href="https://wa.me/6281234567890?text=Saya%20berminat%20pesan%20Kain%20Panjang%20Motif%20Jlamprang%20Sutra" target="_blank" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold rounded-lg flex items-center gap-1.5 transition-colors">
+                                <i class="fa-brands fa-whatsapp text-sm"></i> Pesan WA
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 4 -->
+                <div class="product-card bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col" data-category="cap pria">
+                    <div class="relative overflow-hidden group h-72">
+                        <img src="https://images.unsplash.com/photo-1607345366928-199ea26cfe3e?auto=format&fit=crop&w=600&q=80" alt="Kemeja Batik Cap Pria" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-slate-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <button onclick="openModal('Kemeja Batik Cap Pesisiran', 'Rp 275.000', 'Batik Cap Katun Prima Halus')" class="px-5 py-2 bg-white text-slate-900 font-bold rounded-full text-sm shadow-md hover:bg-amber-400 transition-colors">
+                                Lihat Detail
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs text-amber-700 font-semibold uppercase tracking-wider">Batik Cap • Pria</span>
+                            <h3 class="text-lg font-serif font-bold text-slate-900 mt-1">Kemeja Batik Cap Motif Pesisiran</h3>
+                            <p class="text-xs text-slate-500 mt-1">Bahan: Katun Prima Segar & Lightweight</p>
+                        </div>
+                        <div class="mt-6 flex items-center justify-between pt-4 border-t border-slate-100">
+                            <div>
+                                <p class="text-xl font-bold text-amber-700">Rp 275.000</p>
+                            </div>
+                            <a href="https://wa.me/6281234567890?text=Saya%20berminat%20pesan%20Kemeja%20Batik%20Cap%20Motif%20Pesisiran" target="_blank" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold rounded-lg flex items-center gap-1.5 transition-colors">
+                                <i class="fa-brands fa-whatsapp text-sm"></i> Pesan WA
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 5 -->
+                <div class="product-card bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col" data-category="wanita kain">
+                    <div class="relative overflow-hidden group h-72">
+                        <img src="https://images.unsplash.com/photo-1576995853123-5a10305d93c0?auto=format&fit=crop&w=600&q=80" alt="Outer Batik Encim Wanita" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <span class="absolute top-4 left-4 bg-amber-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Favorit</span>
+                        <div class="absolute inset-0 bg-slate-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <button onclick="openModal('Outer Batik Encim Modern', 'Rp 320.000', 'Batik Cap Motif Encim Floral')" class="px-5 py-2 bg-white text-slate-900 font-bold rounded-full text-sm shadow-md hover:bg-amber-400 transition-colors">
+                                Lihat Detail
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs text-amber-700 font-semibold uppercase tracking-wider">Batik Cap • Wanita</span>
+                            <h3 class="text-lg font-serif font-bold text-slate-900 mt-1">Outer Modern Motif Encim Floral</h3>
+                            <p class="text-xs text-slate-500 mt-1">Cocok untuk acara formal & santai</p>
+                        </div>
+                        <div class="mt-6 flex items-center justify-between pt-4 border-t border-slate-100">
+                            <div>
+                                <p class="text-xl font-bold text-amber-700">Rp 320.000</p>
+                            </div>
+                            <a href="https://wa.me/6281234567890?text=Saya%20berminat%20pesan%20Outer%20Modern%20Motif%20Encim%20Floral" target="_blank" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold rounded-lg flex items-center gap-1.5 transition-colors">
+                                <i class="fa-brands fa-whatsapp text-sm"></i> Pesan WA
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 6 -->
+                <div class="product-card bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col" data-category="kain tulis">
+                    <div class="relative overflow-hidden group h-72">
+                        <img src="https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?auto=format&fit=crop&w=600&q=80" alt="Kain Batik Cap Pekalongan" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-slate-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <button onclick="openModal('Kain Batik Cap Motif Garutan', 'Rp 195.000', 'Bahan Katun Primissima 2 meter')" class="px-5 py-2 bg-white text-slate-900 font-bold rounded-full text-sm shadow-md hover:bg-amber-400 transition-colors">
+                                Lihat Detail
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs text-amber-700 font-semibold uppercase tracking-wider">Batik Cap • Kain</span>
+                            <h3 class="text-lg font-serif font-bold text-slate-900 mt-1">Kain Batik Cap Motif Garutan</h3>
+                            <p class="text-xs text-slate-500 mt-1">Ukuran: 2.00m x 1.15m (Katun Halus)</p>
+                        </div>
+                        <div class="mt-6 flex items-center justify-between pt-4 border-t border-slate-100">
+                            <div>
+                                <p class="text-xl font-bold text-amber-700">Rp 195.000</p>
+                            </div>
+                            <a href="https://wa.me/6281234567890?text=Saya%20berminat%20pesan%20Kain%20Batik%20Cap%20Motif%20Garutan" target="_blank" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold rounded-lg flex items-center gap-1.5 transition-colors">
+                                <i class="fa-brands fa-whatsapp text-sm"></i> Pesan WA
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONI SECTION -->
+    <section id="testimoni" class="py-24 bg-batik-navy text-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <p class="text-amber-400 font-semibold text-sm tracking-widest uppercase mb-2">Ulasan Pembeli</p>
+                <h2 class="text-3xl sm:text-4xl font-serif font-bold">Apa Kata Pelanggan Kami?</h2>
+                <div class="w-16 h-1 bg-amber-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testi 1 -->
+                <div class="bg-slate-800/80 p-8 rounded-2xl border border-amber-500/20 flex flex-col justify-between relative">
+                    <i class="fa-solid fa-quote-right absolute top-6 right-6 text-4xl text-amber-500/10"></i>
+                    <div>
+                        <div class="flex text-amber-400 gap-1 text-sm mb-4">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-slate-300 text-sm leading-relaxed italic">
+                            "Bahan kemeja batiknya sangat dingin dan potongannya pas di badan. Motif Tulis Megamendung-nya benar-benar halus dan kelihatan mewah saat dipakai rapat kantor."
+                        </p>
+                    </div>
+                    <div class="mt-8 flex items-center gap-4">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&q=80" alt="Bapak Hendra" class="w-12 h-12 rounded-full object-cover border-2 border-amber-400">
+                        <div>
+                            <h4 class="font-bold text-white text-sm">Hendra Wijaya</h4>
+                            <p class="text-xs text-amber-400/80">Jakarta Selatan</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testi 2 -->
+                <div class="bg-slate-800/80 p-8 rounded-2xl border border-amber-500/20 flex flex-col justify-between relative">
+                    <i class="fa-solid fa-quote-right absolute top-6 right-6 text-4xl text-amber-500/10"></i>
+                    <div>
+                        <div class="flex text-amber-400 gap-1 text-sm mb-4">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-slate-300 text-sm leading-relaxed italic">
+                            "Pesanan seragam batik untuk acara keluarga besar selesai tepat waktu. Warna jarik dan outer-nya sangat tajam, pengiriman dari Pekalongan ke Surabaya cepat!"
+                        </p>
+                    </div>
+                    <div class="mt-8 flex items-center gap-4">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80" alt="Ibu Ratna" class="w-12 h-12 rounded-full object-cover border-2 border-amber-400">
+                        <div>
+                            <h4 class="font-bold text-white text-sm">Ratna Lestari</h4>
+                            <p class="text-xs text-amber-400/80">Surabaya</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testi 3 -->
+                <div class="bg-slate-800/80 p-8 rounded-2xl border border-amber-500/20 flex flex-col justify-between relative">
+                    <i class="fa-solid fa-quote-right absolute top-6 right-6 text-4xl text-amber-500/10"></i>
+                    <div>
+                        <div class="flex text-amber-400 gap-1 text-sm mb-4">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-slate-300 text-sm leading-relaxed italic">
+                            "Respon penjual via WhatsApp super ramah! Dibantu memilihkan ukuran yang pas dan diberi penjelasan lengkap filosofi motifnya. Sangat direkomendasikan!"
+                        </p>
+                    </div>
+                    <div class="mt-8 flex items-center gap-4">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&q=80" alt="Bapak Rizky" class="w-12 h-12 rounded-full object-cover border-2 border-amber-400">
+                        <div>
+                            <h4 class="font-bold text-white text-sm">Rizky Ramadhan</h4>
+                            <p class="text-xs text-amber-400/80">Bandung</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- KONTAK & FORM SECTION -->
+    <section id="kontak" class="py-24 bg-batik-cream relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-3xl shadow-2xl overflow-hidden border border-slate-200 grid grid-cols-1 lg:grid-cols-12">
+                
+                <!-- Left Info Box -->
+                <div class="lg:col-span-5 bg-batik-navy text-white p-8 sm:p-12 flex flex-col justify-between relative overflow-hidden">
+                    <div class="absolute -right-10 -bottom-10 w-48 h-48 bg-amber-500/10 rounded-full blur-2xl"></div>
+                    <div>
+                        <span class="text-amber-400 text-xs font-bold uppercase tracking-widest">Layanan Pelanggan</span>
+                        <h3 class="text-3xl font-serif font-bold text-white mt-2">Konsultasi & Pemesanan Custom</h3>
+                        <p class="text-slate-300 text-sm mt-4 font-light leading-relaxed">
+                            Ingin memesan batik seragam kantor, sarimbit keluarga, atau konsultasi ukuran & motif? Tim kami siap melayani Anda.
+                        </p>
+
+                        <div class="space-y-6 mt-8">
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center shrink-0">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xs text-slate-400 uppercase">Alamat Galeri</h4>
+                                    <p class="text-sm font-semibold text-white">Jl. Pesindon No. 45, Kauman, Kota Pekalongan, Jawa Tengah 51113</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center shrink-0">
+                                    <i class="fa-brands fa-whatsapp"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xs text-slate-400 uppercase">WhatsApp Chat</h4>
+                                    <p class="text-sm font-semibold text-white">+62 812-3456-7890</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center shrink-0">
+                                    <i class="fa-solid fa-clock"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xs text-slate-400 uppercase">Jam Operasional</h4>
+                                    <p class="text-sm font-semibold text-white">Senin - Sabtu: 08.00 - 20.00 WIB</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-12 pt-6 border-t border-slate-800 flex items-center gap-4 text-slate-400">
+                        <span>Ikuti Kami:</span>
+                        <a href="#" class="hover:text-amber-400 text-lg transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="hover:text-amber-400 text-lg transition-colors"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#" class="hover:text-amber-400 text-lg transition-colors"><i class="fa-brands fa-tiktok"></i></a>
+                    </div>
+                </div>
+
+                <!-- Right Form Box -->
+                <div class="lg:col-span-7 p-8 sm:p-12">
+                    <h3 class="text-2xl font-serif font-bold text-slate-900 mb-2">Kirim Pesan Langsung</h3>
+                    <p class="text-slate-500 text-sm mb-8">Isi formulir di bawah ini untuk terhubung langsung ke WhatsApp customer service kami.</p>
+
+                    <form id="wa-form" class="space-y-5">
+                        <div>
+                            <label for="name" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Nama Lengkap</label>
+                            <input type="text" id="name" required placeholder="Masukkan nama Anda" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none text-sm transition-all">
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                            <div>
+                                <label for="phone" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Nomor WhatsApp</label>
+                                <input type="tel" id="phone" required placeholder="08123456789" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none text-sm transition-all">
+                            </div>
+                            <div>
+                                <label for="category" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Jenis Keperluan</label>
+                                <select id="category" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none text-sm transition-all bg-white">
+                                    <option value="Tanya Produk Katalog">Tanya Produk Katalog</option>
+                                    <option value="Pemesanan Seragam / Custom">Pemesanan Seragam / Custom</option>
+                                    <option value="Kemitraan Reseller">Kemitraan Reseller / Grosir</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="message" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Pesan atau Pertanyaan</label>
+                            <textarea id="message" rows="4" required placeholder="Tuliskan ukuran, motif, atau pertanyaan Anda di sini..." class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none text-sm transition-all"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full py-4 bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-700 hover:to-amber-800 text-white font-bold rounded-xl shadow-lg hover:shadow-amber-600/30 transition-all duration-300 flex items-center justify-center gap-2">
+                            <i class="fa-brands fa-whatsapp text-xl"></i>
+                            <span>Kirim via WhatsApp</span>
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-batik-navy text-white border-t border-amber-500/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
+                
+                <!-- Brand info -->
+                <div class="lg:col-span-2 space-y-4">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-9 h-9 rounded-full bg-amber-500 flex items-center justify-center text-batik-navy font-bold">
+                            <i class="fa-solid fa-crown"></i>
+                        </div>
+                        <span class="font-heading font-bold text-lg text-amber-400">BATIK PEKALONGAN</span>
+                    </div>
+                    <p class="text-slate-400 text-sm leading-relaxed max-w-sm">
+                        UMKM Produsen & Supplier Batik Tulis, Batik Cap, serta Busana Batik Tradisional Modern berkualitas tinggi dari Pekalongan untuk Indonesia.
+                    </p>
+                    <p class="text-xs text-amber-400/80 font-mono pt-2">
+                        <i class="fa-solid fa-certificate text-amber-400 mr-1"></i> 100% Guaranteed Authentic Handcrafted
+                    </p>
+                </div>
+
+                <!-- Navigation Links -->
+                <div>
+                    <h4 class="text-amber-400 font-serif font-bold text-base mb-4">Navigasi</h4>
+                    <ul class="space-y-2 text-sm text-slate-300">
+                        <li><a href="#beranda" class="hover:text-amber-400 transition-colors">Beranda</a></li>
+                        <li><a href="#tentang" class="hover:text-amber-400 transition-colors">Tentang Kami</a></li>
+                        <li><a href="#keunggulan" class="hover:text-amber-400 transition-colors">Keunggulan</a></li>
+                        <li><a href="#katalog" class="hover:text-amber-400 transition-colors">Katalog Produk</a></li>
+                    </ul>
+                </div>
+
+                <!-- Product Categories -->
+                <div>
+                    <h4 class="text-amber-400 font-serif font-bold text-base mb-4">Kategori</h4>
+                    <ul class="space-y-2 text-sm text-slate-300">
+                        <li><a href="#katalog" class="hover:text-amber-400 transition-colors">Batik Tulis Halus</a></li>
+                        <li><a href="#katalog" class="hover:text-amber-400 transition-colors">Batik Cap Pesisiran</a></li>
+                        <li><a href="#katalog" class="hover:text-amber-400 transition-colors">Kemeja Batik Pria</a></li>
+                        <li><a href="#katalog" class="hover:text-amber-400 transition-colors">Dress & Outer Wanita</a></li>
+                    </ul>
+                </div>
+
+                <!-- Payment & Delivery badges -->
+                <div>
+                    <h4 class="text-amber-400 font-serif font-bold text-base mb-4">Pengiriman</h4>
+                    <p class="text-xs text-slate-400 mb-3">Dukungan ekspedisi terpercaya ke seluruh penjuru Nusantara:</p>
+                    <div class="flex flex-wrap gap-2 text-xs font-bold text-slate-300">
+                        <span class="px-2.5 py-1 bg-slate-800 rounded border border-slate-700">JNE</span>
+                        <span class="px-2.5 py-1 bg-slate-800 rounded border border-slate-700">J&T</span>
+                        <span class="px-2.5 py-1 bg-slate-800 rounded border border-slate-700">POS</span>
+                        <span class="px-2.5 py-1 bg-slate-800 rounded border border-slate-700">SiCepat</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Copyright -->
+            <div class="mt-12 pt-8 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+                <p>&copy; 2026 Batik Pekalongan UMKM. Hak Cipta Dilindungi Undang-Undang.</p>
+                <p>Designed with Elegance for UNESCO Crafts & Folk Art Heritage</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- PRODUCT DETAIL MODAL -->
+    <div id="product-modal" class="fixed inset-0 z-50 hidden bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl relative border border-amber-500/30 transform transition-all">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-700 text-xl w-8 h-8 rounded-full flex items-center justify-center bg-slate-100">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="text-center pt-2">
+                <div class="w-12 h-12 bg-amber-100 text-amber-700 rounded-full flex items-center justify-center mx-auto mb-3">
+                    <i class="fa-solid fa-crown text-xl"></i>
+                </div>
+                <h3 id="modal-title" class="text-xl font-serif font-bold text-slate-900">Nama Produk</h3>
+                <p id="modal-desc" class="text-xs text-slate-500 mt-1">Deskripsi Produk</p>
+                <p id="modal-price" class="text-2xl font-bold text-amber-700 mt-4">Rp 0</p>
+            </div>
+            <div class="mt-6 space-y-3">
+                <a id="modal-wa-btn" href="#" target="_blank" class="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl text-center flex items-center justify-center gap-2 transition-colors">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>Pesan Sekarang via WA</span>
+                </a>
+                <button onclick="closeModal()" class="w-full py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold rounded-xl text-sm transition-colors">
+                    Tutup
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // 1. Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            if (mobileMenu.classList.contains('hidden')) {
+                menuIcon.classList.remove('fa-xmark');
+                menuIcon.classList.add('fa-bars');
+            } else {
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-xmark');
+            }
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuIcon.classList.remove('fa-xmark');
+                menuIcon.classList.add('fa-bars');
+            });
+        });
+
+        // 2. Catalog Filter Tabs Logic
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const productCards = document.querySelectorAll('.product-card');
+
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active classes
+                tabBtns.forEach(b => {
+                    b.classList.remove('bg-batik-navy', 'text-white', 'shadow-md');
+                    b.classList.add('bg-white', 'text-slate-700', 'hover:bg-amber-100');
+                });
+
+                // Add active state to clicked button
+                btn.classList.removeAttribute('class');
+                btn.className = 'tab-btn px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 bg-batik-navy text-white shadow-md';
+
+                const filter = btn.getAttribute('data-filter');
+
+                productCards.forEach(card => {
+                    if (filter === 'all') {
+                        card.style.display = 'flex';
+                    } else {
+                        const categories = card.getAttribute('data-category');
+                        if (categories && categories.includes(filter)) {
+                            card.style.display = 'flex';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    }
+                });
+            });
+        });
+
+        // 3. Product Modal Logic
+        const modal = document.getElementById('product-modal');
+        const modalTitle = document.getElementById('modal-title');
+        const modalDesc = document.getElementById('modal-desc');
+        const modalPrice = document.getElementById('modal-price');
+        const modalWaBtn = document.getElementById('modal-wa-btn');
+
+        function openModal(title, price, desc) {
+            modalTitle.textContent = title;
+            modalDesc.textContent = desc;
+            modalPrice.textContent = price;
+            modalWaBtn.href = `https://wa.me/6281234567890?text=Halo%20Batik%20Pekalongan,%20saya%20tertarik%20dengan%20produk%20${encodeURIComponent(title)}%20seharga%20${encodeURIComponent(price)}`;
+            modal.classList.remove('hidden');
+        }
+
+        function closeModal() {
+            modal.classList.add('hidden');
+        }
+
+        // Close Modal when clicking outside content
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+        // 4. WhatsApp Form Submission Handler
+        const waForm = document.getElementById('wa-form');
+        waForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const category = document.getElementById('category').value;
+            const message = document.getElementById('message').value;
+
+            const targetWA = "6281234567890";
+            const formattedText = `Halo Batik Pekalongan,%0A%0ASaya ingin bertanya / berkonsultasi:%0A- *Nama*: ${encodeURIComponent(name)}%0A- *No. HP*: ${encodeURIComponent(phone)}%0A- *Keperluan*: ${encodeURIComponent(category)}%0A- *Pesan*: ${encodeURIComponent(message)}`;
+
+            window.open(`https://wa.me/${targetWA}?text=${formattedText}`, '_blank');
+        });
+    </script>
+</body>
+</html>
